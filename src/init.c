@@ -6,7 +6,7 @@
 /*   By: abdsalah <abdsalah@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/01 21:52:43 by abdsalah          #+#    #+#             */
-/*   Updated: 2025/05/02 14:31:39 by abdsalah         ###   ########.fr       */
+/*   Updated: 2025/05/03 01:15:33 by abdsalah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,9 @@ static void target_setup(t_game *game)
 
 static void init_game(t_game *game)
 {
+	int temp = game->grid_size;
 	ft_bzero(game, sizeof(t_game));
+	game->grid_size = temp;
 	target_setup(game);
 	signal(SIGWINCH, resize_handler);
 	srand(time(NULL));

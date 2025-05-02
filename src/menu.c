@@ -6,7 +6,7 @@
 /*   By: abdsalah <abdsalah@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/02 19:16:20 by abdsalah          #+#    #+#             */
-/*   Updated: 2025/05/02 19:28:09 by abdsalah         ###   ########.fr       */
+/*   Updated: 2025/05/03 02:31:41 by abdsalah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,9 @@ int navigate_menu(char **choices, int n_choices, char *title)
     int choice = -1;
     int menu_width = 40;
     int menu_height = n_choices * 2 + 5;
-    int startx = (COLS - menu_width) / 2;
-    int starty = (LINES - menu_height) / 2;
+    
+    int startx = ((COLS - menu_width) / 2 > 0) ? (COLS - menu_width) / 2 : 0;
+    int starty = ((LINES - menu_height) / 2 > 0) ? (LINES - menu_height) / 2 : 0;
 
     WINDOW *menu_win = newwin(menu_height, menu_width, starty, startx);
     keypad(menu_win, TRUE);

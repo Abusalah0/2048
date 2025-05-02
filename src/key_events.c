@@ -6,7 +6,7 @@
 /*   By: abdsalah <abdsalah@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/01 22:20:06 by abdsalah          #+#    #+#             */
-/*   Updated: 2025/05/02 16:13:04 by abdsalah         ###   ########.fr       */
+/*   Updated: 2025/05/03 01:05:53 by abdsalah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,24 +15,25 @@
 //AI disclamer: I used AI here to make the code this compact and more readable.
 // the original code was repititive and long.
 
-static void	compress(int line[GRID_SIZE])
+static void	compress(int line[5], int size)
 {
-	int	temp[GRID_SIZE] = {0};
+	int	temp[size];
 	int	idx;
 
 	idx = 0;
-	for (int i = 0; i < GRID_SIZE; i++)
+	ft_bzero(temp, sizeof(temp));
+	for (int i = 0; i < size; i++)
 	{
 		if (line[i] != 0)
 			temp[idx++] = line[i];
 	}
-	for (int i = 0; i < GRID_SIZE; i++)
+	for (int i = 0; i < size; i++)
 		line[i] = temp[i];
 }
 
-static void	merge(int line[GRID_SIZE], t_game *game)
+static void	merge(int line[5], t_game *game)
 {
-	for (int i = 0; i < GRID_SIZE - 1; i++)
+	for (int i = 0; i < game->grid_size - 1; i++)
 	{
 		if (line[i] != 0 && line[i] == line[i + 1])
 		{
@@ -47,64 +48,64 @@ static void	merge(int line[GRID_SIZE], t_game *game)
 
 void	up_key_event(t_game *game)
 {
-	int col[GRID_SIZE];
+	int col[game->grid_size];
 
-	for (int c = 0; c < GRID_SIZE; c++)
+	for (int c = 0; c < game->grid_size; c++)
 	{
-		for (int r = 0; r < GRID_SIZE; r++)
+		for (int r = 0; r < game->grid_size; r++)
 			col[r] = game->grid[r][c];
-		compress(col);
+		compress(col, game->grid_size);
 		merge(col, game);
-		compress(col);
-		for (int r = 0; r < GRID_SIZE; r++)
+		compress(col, game->grid_size);
+		for (int r = 0; r < game->grid_size; r++)
 			game->grid[r][c] = col[r];
 	}
 }
 
 void	down_key_event(t_game *game)
 {
-	int col[GRID_SIZE];
+	int col[game->grid_size];
 
-	for (int c = 0; c < GRID_SIZE; c++)
+	for (int c = 0; c < game->grid_size; c++)
 	{
-		for (int r = 0; r < GRID_SIZE; r++)
-			col[GRID_SIZE - 1 - r] = game->grid[r][c];
-		compress(col);
+		for (int r = 0; r < game->grid_size; r++)
+			col[game->grid_size - 1 - r] = game->grid[r][c];
+		compress(col, game->grid_size);
 		merge(col, game);
-		compress(col);
-		for (int r = 0; r < GRID_SIZE; r++)
-			game->grid[r][c] = col[GRID_SIZE - 1 - r];
+		compress(col, game->grid_size);
+		for (int r = 0; r < game->grid_size; r++)
+			game->grid[r][c] = col[game->grid_size - 1 - r];
 	}
 }
 
 void	left_key_event(t_game *game)
 {
-	int row[GRID_SIZE];
+	int row[game->grid_size];
 
-	for (int r = 0; r < GRID_SIZE; r++)
+	for (int r = 0; r < game->grid_size; r++)
 	{
-		for (int c = 0; c < GRID_SIZE; c++)
+		for (int c = 0; c < game->grid_size; c++)
 			row[c] = game->grid[r][c];
-		compress(row);
+		compress(row, game->grid_size);
 		merge(row, game);
-		compress(row);
-		for (int c = 0; c < GRID_SIZE; c++)
+		compress(row, game->grid_size);
+		for (int c = 0; c < game->grid_size; c++)
 			game->grid[r][c] = row[c];
 	}
 }
 
 void	right_key_event(t_game *game)
 {
-	int row[GRID_SIZE];
+	int row[game->grid_size];
 
-	for (int r = 0; r < GRID_SIZE; r++)
+	for (int r = 0; r < game->grid_size; r++)
 	{
-		for (int c = 0; c < GRID_SIZE; c++)
-			row[GRID_SIZE - 1 - c] = game->grid[r][c];
-		compress(row);
+		for (int c = 0; c < game->grid_size; c++)
+			row[game->grid_size - 1 - c] = game->grid[r][c];
+		compress(row, game->grid_size);
 		merge(row, game);
-		compress(row);
-		for (int c = 0; c < GRID_SIZE; c++)
-			game->grid[r][c] = row[GRID_SIZE - 1 - c];
+		compress(row, game->grid_size);
+		for (int c = 0; c < game->grid_size; c++)
+			game->grid[r][c] = row[game->grid_size - 1 - c];
 	}
 }

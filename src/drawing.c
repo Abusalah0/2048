@@ -6,13 +6,13 @@
 /*   By: abdsalah <abdsalah@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/01 22:16:00 by abdsalah          #+#    #+#             */
-/*   Updated: 2025/05/02 15:42:31 by abdsalah         ###   ########.fr       */
+/*   Updated: 2025/05/03 01:02:46 by abdsalah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rush.h"
 
-int	draw_initial_board(void)
+int	draw_initial_board(int size)
 {
 	int	term_height;
 	int	term_width;
@@ -22,16 +22,16 @@ int	draw_initial_board(void)
 	int	x;
 
 	getmaxyx(stdscr, term_height, term_width);
-	cell_height = term_height / GRID_SIZE;
-	cell_width = term_width / GRID_SIZE;
+	cell_height = term_height / size;
+	cell_width = term_width / size;
 	
-	for (int row = 0; row <= GRID_SIZE; row++)
+	for (int row = 0; row <= size; row++)
 	{
 		y = row * cell_height;
 		for (int x = 0; x < term_width; x++)
 			mvaddch(y, x, '-');
 	}
-	for (int col = 0; col <= GRID_SIZE; col++)
+	for (int col = 0; col <= size; col++)
 	{
 		x = col * cell_width;
 		for (int y = 0; y < term_height; y++)
@@ -48,11 +48,11 @@ int	fill_board(t_game *game)
 	int	cell_width;
 
 	getmaxyx(stdscr, term_height, term_width);
-	cell_height = term_height / GRID_SIZE;
-	cell_width = term_width / GRID_SIZE;
-	for (int row = 0; row < GRID_SIZE; row++)
+	cell_height = term_height / game->grid_size;
+	cell_width = term_width / game->grid_size;
+	for (int row = 0; row < game->grid_size; row++)
 	{
-		for (int col = 0; col < GRID_SIZE; col++)
+		for (int col = 0; col < game->grid_size; col++)
 		{
 			if (game->grid[row][col] != 0)
 			{
@@ -69,7 +69,7 @@ int	fill_board(t_game *game)
 int	draw_board(t_game *game)
 {
 	clear();
-	draw_initial_board();
+	draw_initial_board(game->grid_size);
 	fill_board(game);
 	refresh();
 	return (0);

@@ -6,7 +6,7 @@
 /*   By: abdsalah <abdsalah@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/01 21:52:04 by abdsalah          #+#    #+#             */
-/*   Updated: 2025/05/02 14:35:24 by abdsalah         ###   ########.fr       */
+/*   Updated: 2025/05/03 01:38:24 by abdsalah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,14 +25,14 @@ int	get_random_num(void)
 
 int	get_random_pos(t_game *game)
 {
-	int	empty_cells[16][2];
+	int	empty_cells[25][2];
 	int	count;
 	int	index;
 
 	count = 0;
-	for (int i = 0; i < 4; i++)
+	for (int i = 0; i < game->grid_size; i++)
 	{
-		for (int j = 0; j < 4; j++)
+		for (int j = 0; j < game->grid_size; j++)
 		{
 			if (game->grid[i][j] == 0)
 			{
@@ -45,7 +45,7 @@ int	get_random_pos(t_game *game)
 	if (count == 0)
 		return (-1);
 	index = rand() % count;
-	return (empty_cells[index][0] * 4 + empty_cells[index][1]);
+	return (empty_cells[index][0] *  game->grid_size + empty_cells[index][1]);
 }
 
 int	spawn_random_tile(t_game *game)
@@ -55,6 +55,6 @@ int	spawn_random_tile(t_game *game)
 	idx = get_random_pos(game);
 	if (idx < 0)
 		return (1);
-	game->grid[idx / 4][idx % 4] = get_random_num();
+	game->grid[idx / game->grid_size][idx % game->grid_size] = get_random_num();
 	return (0);
 }

@@ -1,0 +1,4 @@
+2048
+objs
+*.o
+libft.a

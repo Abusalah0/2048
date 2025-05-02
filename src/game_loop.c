@@ -6,7 +6,7 @@
 /*   By: abdsalah <abdsalah@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/02 01:38:09 by abdsalah          #+#    #+#             */
-/*   Updated: 2025/05/02 18:26:02 by abdsalah         ###   ########.fr       */
+/*   Updated: 2025/05/03 01:27:47 by abdsalah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,15 +30,15 @@ static int	check_game_over(t_game *game)
 	int	i;
 	int	j;
 
-	for (i = 0; i < GRID_SIZE; i++)
+	for (i = 0; i < game->grid_size; i++)
 	{
-		for (j = 0; j < GRID_SIZE; j++)
+		for (j = 0; j < game->grid_size; j++)
 		{
 			if (game->grid[i][j] == 0)
 				return (0);
-			if (i < 3 && game->grid[i][j] == game->grid[i + 1][j])
+			if (i < game->grid_size - 1 && game->grid[i][j] == game->grid[i + 1][j])
 				return (0);
-			if (j < 3 && game->grid[i][j] == game->grid[i][j + 1])
+			if (j < game->grid_size - 1 && game->grid[i][j] == game->grid[i][j + 1])
 				return (0);
 		}
 	}
