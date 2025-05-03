@@ -6,7 +6,7 @@
 /*   By: abdsalah <abdsalah@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/01 22:16:00 by abdsalah          #+#    #+#             */
-/*   Updated: 2025/05/03 16:58:38 by abdsalah         ###   ########.fr       */
+/*   Updated: 2025/05/03 20:20:22 by abdsalah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,34 +14,34 @@
 
 static int draw_board_cells(int size)
 {
-    int term_h, term_w;
-    int raw_h, raw_w;
-    int cell_h, cell_w;
-    int used_h, used_w;
+    int term_height, term_width;
+    int raw_height, raw_width;
+    int cell_height, cell_width;
+    int used_height, used_width;
     int y_offset, x_offset;
     int y, x;
 
-    getmaxyx(stdscr, term_h, term_w);
-    raw_h = term_h * BOARD_RATIO / 100;
-    raw_w = term_w * BOARD_RATIO / 100;
-    cell_h = raw_h / size;
-    cell_w = raw_w / size;
-    used_h = cell_h * size;
-    used_w = cell_w * size;
+    getmaxyx(stdscr, term_height, term_width);
+    raw_height = term_height * BOARD_RATIO / 100;
+    raw_width = term_width * BOARD_RATIO / 100;
+    cell_height = raw_height / size;
+    cell_width = raw_width / size;
+    used_height = cell_height * size;
+    used_width = cell_width * size;
 
-    y_offset = (term_h - used_h) / 2;
-    x_offset = (term_w - used_w) / 2;
+    y_offset = (term_height - used_height) / 2;
+    x_offset = (term_width - used_width) / 2;
     for (int row = 0; row <= size; row++)
     {
-        y = y_offset + row * cell_h;
-        for (x = x_offset; x < x_offset + used_w; x++)
-            mvaddch(y, x, '-');
+        y = y_offset + row * cell_height;
+        for (x = x_offset; x < x_offset + used_width; x++)
+            mvaddch(y, x, ACS_HLINE);
     }
     for (int col = 0; col <= size; col++)
     {
-        x = x_offset + col * cell_w;
-        for (y = y_offset; y < y_offset + used_h; y++)
-            mvaddch(y, x, '|');
+        x = x_offset + col * cell_width;
+        for (y = y_offset; y < y_offset + used_height; y++)
+            mvaddch(y, x, ACS_VLINE);
     }
 
     return 0;
