@@ -6,7 +6,7 @@
 /*   By: abdsalah <abdsalah@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/02 00:44:22 by abdsalah          #+#    #+#             */
-/*   Updated: 2025/05/03 02:41:38 by abdsalah         ###   ########.fr       */
+/*   Updated: 2025/05/03 16:27:56 by abdsalah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,16 +20,21 @@ int	board_changed(int *old_flat, int *new_flat, int size)
             return (1);
     return (0);
 }
-
-int	handle_key_events(int key, t_game *game)
+int handle_key_events(int key, t_game *game)
 {
     int old_board[game->grid_size][game->grid_size];
+    bool moved;
 
     ft_memcpy(old_board,
            game->grid,
            game->grid_size * game->grid_size * sizeof(int));
-
-    if (key == KEY_UP)
+    if (key == KEY_RESIZE)
+    {
+        clear();
+        draw_board(game);
+        return 0;
+    }
+    else if (key == KEY_UP)
         up_key_event(game);
     else if (key == KEY_DOWN)
         down_key_event(game);
@@ -37,19 +42,20 @@ int	handle_key_events(int key, t_game *game)
         left_key_event(game);
     else if (key == KEY_RIGHT)
         right_key_event(game);
-    if (key == KEY_RESIZE)
-    {
-        clear();
-        draw_board(game);
-    }
-    if (board_changed(&old_board[0][0],
-                      &game->grid[0][0],
-                      game->grid_size))
-    {
+    else
+        return 0;
+
+    moved = board_changed(&old_board[0][0],
+                          &game->grid[0][0],
+                          game->grid_size);
+    if (moved)
         spawn_random_tile(game);
-        draw_board(game);
+    clear();
+    draw_board(game);
+    if (moved)
+    {
         napms(10);
         flushinp();
     }
-    return (0);
+    return 0;
 }
