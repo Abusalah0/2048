@@ -6,7 +6,7 @@
 /*   By: abdsalah <abdsalah@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/02 19:16:20 by abdsalah          #+#    #+#             */
-/*   Updated: 2025/05/03 16:54:43 by abdsalah         ###   ########.fr       */
+/*   Updated: 2025/05/03 21:27:11 by abdsalah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,13 +45,13 @@ static void print_menu(WINDOW *menu_win, int highlight, char **choices, int n_ch
     wrefresh(menu_win);
 }
 
-static int menu_maker(char **choices, int n_choices, char *title)
+static int menu_maker(char **choices, int num_of_choices, char *title)
 {
     int selected = 0;
     int input;
     int choice = -1;
     int menu_width = 40;
-    int menu_height = n_choices * 2 + 5;
+    int menu_height = num_of_choices * 2 + 5;
     
     int startx = ((COLS - menu_width) / 2 > 0) ? (COLS - menu_width) / 2 : 0;
     int starty = ((LINES - menu_height) / 2 > 0) ? (LINES - menu_height) / 2 : 0;
@@ -59,17 +59,22 @@ static int menu_maker(char **choices, int n_choices, char *title)
     keypad(menu_win, TRUE);
     while (1)
     {
-        print_menu(menu_win, selected, choices, n_choices, title);
+        print_menu(menu_win, selected, choices, num_of_choices, title);
         input = wgetch(menu_win);
 
         if (input == KEY_UP)
-            selected = (selected - 1 + n_choices) % n_choices;
+            selected = (selected - 1 + num_of_choices) % num_of_choices;
         else if (input == KEY_DOWN)
-            selected = (selected + 1) % n_choices;
+            selected = (selected + 1) % num_of_choices;
         else if (input == ENTER || input == '\n')
         {
             choice = selected;
             break;
+        }
+        else if (input == KEY_RESIZE)
+        {
+            werase(menu_win);
+            return menu_maker(choices, num_of_choices, title);
         }
     }
     delwin(menu_win);
