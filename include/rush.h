@@ -6,7 +6,7 @@
 /*   By: abdsalah <abdsalah@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/30 19:48:23 by abdsalah          #+#    #+#             */
-/*   Updated: 2025/05/03 16:39:05 by abdsalah         ###   ########.fr       */
+/*   Updated: 2025/05/03 16:58:31 by abdsalah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 # define DEFAULT_TARGET 2048
 # define ESCAPE 27
 # define ENTER 10
-# define BOARD_RATIO 80
+# define BOARD_RATIO 90
 # define ARRAY_SIZE(a) (sizeof(a) / sizeof(a[0]))
 
 extern int g_sig;
@@ -48,7 +48,6 @@ int		get_random_num(void);
 int		get_random_pos(t_game *game);
 void	init(t_game *game);
 int		start(t_game *game);
-int		draw_initial_board(int size);
 int		fill_board(t_game *game);
 int		draw_board(t_game *game);
 int		handle_key_events(int key, t_game *game);

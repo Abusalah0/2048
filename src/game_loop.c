@@ -6,13 +6,13 @@
 /*   By: abdsalah <abdsalah@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/02 01:38:09 by abdsalah          #+#    #+#             */
-/*   Updated: 2025/05/03 01:27:47 by abdsalah         ###   ########.fr       */
+/*   Updated: 2025/05/03 16:54:26 by abdsalah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rush.h"
 
-void	game_over_handler(void)
+static void	game_over_handler(t_game *game)
 {
 	int	height;
 	int	width;
@@ -20,7 +20,8 @@ void	game_over_handler(void)
 	clear();
 	getmaxyx(stdscr, height, width);
 	mvprintw(height / 2, (width - 9) / 2, "Game Over");
-	mvprintw(height / 2 + 1, (width - 20) / 2, "Press any key to quit");
+	mvprintw(height / 2 + 1, (width - 11) / 2, "Score: %d", game->score);
+	mvprintw(height / 2 + 2, (width - 20) / 2, "Press any key to quit");
 	refresh();
 	getch();
 }
@@ -67,15 +68,10 @@ static void	check_win_stat(t_game *game)
 int	game_loop(t_game *game)
 {
 	int	ch;
-
+	
 	while (1)
 	{
-		// if (g_sig == SIGWINCH)
-		// {
-		// 	clear();
-		// 	draw_board(game);
-		// 	g_sig = 0;
-		// }
+        mvprintw(0, 0, "Score: %d", game->score);
 		check_win_stat(game);
 		if (check_game_over(game))
 			break ;
@@ -84,14 +80,8 @@ int	game_loop(t_game *game)
 		{
 			break ;
 		}
-		// if (g_sig == SIGWINCH)
-		// {
-			// clear();
-			// draw_board(game);
-			// g_sig = 0;
-		// }
 		handle_key_events(ch, game);
 	}
-	game_over_handler();
+	game_over_handler(game);
 	return (0);
 }

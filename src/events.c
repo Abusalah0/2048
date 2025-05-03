@@ -6,17 +6,17 @@
 /*   By: abdsalah <abdsalah@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/02 00:44:22 by abdsalah          #+#    #+#             */
-/*   Updated: 2025/05/03 16:27:56 by abdsalah         ###   ########.fr       */
+/*   Updated: 2025/05/03 16:50:49 by abdsalah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rush.h"
 
-int	board_changed(int *old_flat, int *new_flat, int size)
+int	board_changed(int *old, int *new, int size)
 {
     int total = size * size;
     for (int k = 0; k < total; k++)
-        if (old_flat[k] != new_flat[k])
+        if (old[k] != new[k])
             return (1);
     return (0);
 }
@@ -32,7 +32,7 @@ int handle_key_events(int key, t_game *game)
     {
         clear();
         draw_board(game);
-        return 0;
+        return (0);
     }
     else if (key == KEY_UP)
         up_key_event(game);
@@ -43,7 +43,7 @@ int handle_key_events(int key, t_game *game)
     else if (key == KEY_RIGHT)
         right_key_event(game);
     else
-        return 0;
+        return (0);
 
     moved = board_changed(&old_board[0][0],
                           &game->grid[0][0],
@@ -57,5 +57,5 @@ int handle_key_events(int key, t_game *game)
         napms(10);
         flushinp();
     }
-    return 0;
+    return (0);
 }

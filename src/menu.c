@@ -6,13 +6,13 @@
 /*   By: abdsalah <abdsalah@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/02 19:16:20 by abdsalah          #+#    #+#             */
-/*   Updated: 2025/05/03 16:40:15 by abdsalah         ###   ########.fr       */
+/*   Updated: 2025/05/03 16:54:43 by abdsalah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rush.h"
 
-void print_menu_title(WINDOW *menu_win, char *title)
+static void print_menu_title(WINDOW *menu_win, char *title)
 {
     int win_width;
     int title_x;
@@ -20,13 +20,12 @@ void print_menu_title(WINDOW *menu_win, char *title)
     win_width = getmaxx(menu_win);
     werase(menu_win);
     box(menu_win, 0, 0);
-    
     title_x = (win_width - ft_strlen(title)) / 2;
     mvwprintw(menu_win, 1, title_x, "%s", title);
     wrefresh(menu_win);
 }
 
-void print_menu(WINDOW *menu_win, int highlight, char **choices, int n_choices, char *title)
+static void print_menu(WINDOW *menu_win, int highlight, char **choices, int n_choices, char *title)
 {
     int win_width;
     int choice_x;
@@ -46,7 +45,7 @@ void print_menu(WINDOW *menu_win, int highlight, char **choices, int n_choices, 
     wrefresh(menu_win);
 }
 
-int navigate_menu(char **choices, int n_choices, char *title)
+static int menu_maker(char **choices, int n_choices, char *title)
 {
     int selected = 0;
     int input;
@@ -56,7 +55,6 @@ int navigate_menu(char **choices, int n_choices, char *title)
     
     int startx = ((COLS - menu_width) / 2 > 0) ? (COLS - menu_width) / 2 : 0;
     int starty = ((LINES - menu_height) / 2 > 0) ? (LINES - menu_height) / 2 : 0;
-
     WINDOW *menu_win = newwin(menu_height, menu_width, starty, startx);
     keypad(menu_win, TRUE);
     while (1)
@@ -83,10 +81,10 @@ int start_menu(t_game *game)
     char *main_choices[] = { "Start", "Quit" };
     char *grid_choices[] = { "4x4", "5x5" };
 
-    int main_choice = navigate_menu(main_choices, ARRAY_SIZE(main_choices), "Welcome to 2048");
+    int main_choice = menu_maker(main_choices, ARRAY_SIZE(main_choices), "Welcome to 2048");
     if (main_choice == 0)
     {
-        int grid_choice = navigate_menu(grid_choices, ARRAY_SIZE(grid_choices), "Select Grid Size");
+        int grid_choice = menu_maker(grid_choices, ARRAY_SIZE(grid_choices), "Select Grid Size");
         if (grid_choice == 0)
             game->grid_size = 4;
         else

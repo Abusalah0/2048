@@ -1,5 +1,5 @@
 CC = cc
-CFLAGS = -Wall -Werror -Wextra -g -Iinclude 
+CFLAGS = -Wall -Werror -Wextra -Iinclude 
 NAME = 2048
 
 LIBFT_DIR = libft

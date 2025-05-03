@@ -6,13 +6,13 @@
 /*   By: abdsalah <abdsalah@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/01 22:16:00 by abdsalah          #+#    #+#             */
-/*   Updated: 2025/05/03 16:35:26 by abdsalah         ###   ########.fr       */
+/*   Updated: 2025/05/03 16:58:38 by abdsalah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rush.h"
 
-int draw_initial_board(int size)
+static int draw_board_cells(int size)
 {
     int term_h, term_w;
     int raw_h, raw_w;
@@ -47,7 +47,7 @@ int draw_initial_board(int size)
     return 0;
 }
 
-void print_nums_on_board(int used_height, int used_width, int cell_height, int cell_width, t_game *game)
+static void print_nums_on_board(int used_height, int used_width, int cell_height, int cell_width, t_game *game)
 {
     int y_offset, x_offset;
     int term_height, term_width;
@@ -92,7 +92,7 @@ int fill_board(t_game *game)
 int	draw_board(t_game *game)
 {
 	clear();
-	draw_initial_board(game->grid_size);
+	draw_board_cells(game->grid_size);
 	fill_board(game);
 	refresh();
 	return (0);
