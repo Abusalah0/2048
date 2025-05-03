@@ -6,7 +6,7 @@
 /*   By: abdsalah <abdsalah@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/02 00:44:22 by abdsalah          #+#    #+#             */
-/*   Updated: 2025/05/03 17:04:22 by abdsalah         ###   ########.fr       */
+/*   Updated: 2025/05/03 22:28:47 by abdsalah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,14 @@ int handle_key_events(int key, t_game *game)
     int old_board[game->grid_size][game->grid_size];
     bool moved;
 
+    
     ft_memcpy(old_board,
            game->grid,
            game->grid_size * game->grid_size * sizeof(int));
+
     if (key == KEY_RESIZE)
     {
-        clear();
+        resizeterm(0, 0);
         draw_board(game);
         return (0);
     }

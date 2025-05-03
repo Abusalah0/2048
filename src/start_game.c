@@ -6,7 +6,7 @@
 /*   By: abdsalah <abdsalah@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/01 21:53:53 by abdsalah          #+#    #+#             */
-/*   Updated: 2025/05/03 16:42:13 by abdsalah         ###   ########.fr       */
+/*   Updated: 2025/05/03 21:41:01 by abdsalah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static int	init_board_nums(t_game *game)
 int	start(t_game *game)
 {
 	if (start_menu(game))
-		return (1);
+		return (0);
 	init_board_nums(game);
 	draw_board(game);
 	game_loop(game);

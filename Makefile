@@ -9,7 +9,7 @@ LIBFT = $(LIBFT_DIR)/libft.a
 SRC_DIR = src
 OBJS_DIR = objs
 
-SRC = main.c random_spawn.c start_game.c init.c drawing.c key_events.c events.c game_loop.c signal_handler.c colors.c menu.c utils.c
+SRC = main.c random_spawn.c start_game.c init.c drawing.c key_events.c events.c game_loop.c colors.c menu.c utils.c
 
 SRCS = $(addprefix $(SRC_DIR)/, $(SRC))
 OBJS = $(patsubst $(SRC_DIR)/%.c, $(OBJS_DIR)/%.o, $(SRCS))

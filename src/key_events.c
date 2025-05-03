@@ -6,14 +6,11 @@
 /*   By: abdsalah <abdsalah@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/01 22:20:06 by abdsalah          #+#    #+#             */
-/*   Updated: 2025/05/03 01:05:53 by abdsalah         ###   ########.fr       */
+/*   Updated: 2025/05/03 21:46:46 by abdsalah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rush.h"
-
-//AI disclamer: I used AI here to make the code this compact and more readable.
-// the original code was repititive and long.
 
 static void	compress(int line[5], int size)
 {

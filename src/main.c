@@ -6,13 +6,11 @@
 /*   By: abdsalah <abdsalah@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/30 19:28:47 by abdsalah          #+#    #+#             */
-/*   Updated: 2025/05/03 17:15:45 by abdsalah         ###   ########.fr       */
+/*   Updated: 2025/05/03 22:31:03 by abdsalah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rush.h"
-
-int	g_sig = 0;
 
 int	main(void)
 {
@@ -22,10 +20,7 @@ int	main(void)
 	{
 		return (1);
 	}
-	if (start(&game))
-	{
-		return (1);
-	}
+	start(&game);
 	clear();
 	endwin();
 	return (0);

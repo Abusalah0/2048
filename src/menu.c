@@ -6,7 +6,7 @@
 /*   By: abdsalah <abdsalah@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/02 19:16:20 by abdsalah          #+#    #+#             */
-/*   Updated: 2025/05/03 21:27:11 by abdsalah         ###   ########.fr       */
+/*   Updated: 2025/05/03 22:40:57 by abdsalah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,7 @@ static int menu_maker(char **choices, int num_of_choices, char *title)
         else if (input == KEY_RESIZE)
         {
             werase(menu_win);
+            clear();
             return menu_maker(choices, num_of_choices, title);
         }
     }

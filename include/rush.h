@@ -6,7 +6,7 @@
 /*   By: abdsalah <abdsalah@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/30 19:48:23 by abdsalah          #+#    #+#             */
-/*   Updated: 2025/05/03 17:14:01 by abdsalah         ###   ########.fr       */
+/*   Updated: 2025/05/03 22:31:08 by abdsalah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,6 @@
 # define ENTER 10
 # define BOARD_RATIO 90
 # define ARRAY_SIZE(a) (sizeof(a) / sizeof(a[0]))
-
-extern int g_sig;
 
 enum	e_const
 {

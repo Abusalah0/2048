@@ -6,7 +6,7 @@
 /*   By: abdsalah <abdsalah@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/01 21:52:43 by abdsalah          #+#    #+#             */
-/*   Updated: 2025/05/03 17:14:19 by abdsalah         ###   ########.fr       */
+/*   Updated: 2025/05/03 22:26:48 by abdsalah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,6 @@ static void init_game(t_game *game)
 	ft_bzero(game, sizeof(t_game));
 	game->grid_size = temp;
 	target_setup(game);
-	signal(SIGWINCH, resize_handler);
 	srand(time(NULL));
 }
 
