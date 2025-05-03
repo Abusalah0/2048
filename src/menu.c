@@ -6,7 +6,7 @@
 /*   By: abdsalah <abdsalah@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/02 19:16:20 by abdsalah          #+#    #+#             */
-/*   Updated: 2025/05/03 02:31:41 by abdsalah         ###   ########.fr       */
+/*   Updated: 2025/05/03 16:40:15 by abdsalah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,10 +78,8 @@ int navigate_menu(char **choices, int n_choices, char *title)
     return choice;
 }
 
-void start_menu(t_game *game)
+int start_menu(t_game *game)
 {
-    (void)game;
-
     char *main_choices[] = { "Start", "Quit" };
     char *grid_choices[] = { "4x4", "5x5" };
 
@@ -94,11 +92,12 @@ void start_menu(t_game *game)
         else
             game->grid_size = 5;
         endwin();
+        return (0);
     }
     else
     {
         endwin();
         printf("Goodbye!\n");
-        exit(0);
+        return (1);
     }
 }

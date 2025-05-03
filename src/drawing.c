@@ -6,7 +6,7 @@
 /*   By: abdsalah <abdsalah@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/01 22:16:00 by abdsalah          #+#    #+#             */
-/*   Updated: 2025/05/03 16:33:21 by abdsalah         ###   ########.fr       */
+/*   Updated: 2025/05/03 16:35:26 by abdsalah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,8 @@ void print_nums_on_board(int used_height, int used_width, int cell_height, int c
 {
     int y_offset, x_offset;
     int term_height, term_width;
+
 	getmaxyx(stdscr, term_height, term_width);
-	
 	y_offset = (term_height - used_height) / 2;
     x_offset = (term_width - used_width) / 2;
     for (int row = 0; row < game->grid_size; row++)
@@ -79,7 +79,6 @@ int fill_board(t_game *game)
     int used_height, used_width;
 
     getmaxyx(stdscr, term_height, term_width);
-
     raw_height  = term_height * BOARD_RATIO / 100;
     raw_width = term_width * BOARD_RATIO / 100;
     cell_height  = raw_height / game->grid_size;
