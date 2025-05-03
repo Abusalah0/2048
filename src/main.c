@@ -6,7 +6,7 @@
 /*   By: abdsalah <abdsalah@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/30 19:28:47 by abdsalah          #+#    #+#             */
-/*   Updated: 2025/05/03 16:38:28 by abdsalah         ###   ########.fr       */
+/*   Updated: 2025/05/03 17:15:45 by abdsalah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,14 @@ int	main(void)
 {
 	t_game game;
 	
-	init(&game);
-	start(&game);
+	if (init(&game))
+	{
+		return (1);
+	}
+	if (start(&game))
+	{
+		return (1);
+	}
 	clear();
 	endwin();
 	return (0);

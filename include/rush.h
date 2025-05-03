@@ -6,7 +6,7 @@
 /*   By: abdsalah <abdsalah@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/30 19:48:23 by abdsalah          #+#    #+#             */
-/*   Updated: 2025/05/03 16:58:31 by abdsalah         ###   ########.fr       */
+/*   Updated: 2025/05/03 17:14:01 by abdsalah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ typedef struct s_game
 
 int		get_random_num(void);
 int		get_random_pos(t_game *game);
-void	init(t_game *game);
+int		init(t_game *game);
 int		start(t_game *game);
 int		fill_board(t_game *game);
 int		draw_board(t_game *game);
