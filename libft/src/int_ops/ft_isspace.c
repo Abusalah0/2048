@@ -1,26 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_is_pow_of_2.c                                   :+:      :+:    :+:   */
+/*   ft_isspace.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abdsalah <abdsalah@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/02 14:18:17 by abdsalah          #+#    #+#             */
-/*   Updated: 2025/05/02 14:19:22 by abdsalah         ###   ########.fr       */
+/*   Created: 2025/05/06 17:57:47 by abdsalah          #+#    #+#             */
+/*   Updated: 2025/05/06 17:57:56 by abdsalah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-bool	ft_is_power_of_2(int num)
+int ft_isspace(int c)
 {
-	if (num <= 0)
-		return (false);
-	while (num > 1)
-	{
-		if (num % 2 != 0)
-			return (false);
-		num /= 2;
-	}
-	return (true);
+    if (c == ' ' || c == '\t' || c == '\n' || c == '\v' || c == '\f' || c == '\r')
+        return (1);
+    return (0);
 }

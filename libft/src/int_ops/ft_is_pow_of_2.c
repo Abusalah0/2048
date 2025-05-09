@@ -1,29 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   ft_is_pow_of_2.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abdsalah <abdsalah@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/03 16:08:48 by abdsalah          #+#    #+#             */
-/*   Updated: 2025/05/03 16:09:08 by abdsalah         ###   ########.fr       */
+/*   Created: 2025/05/02 14:18:17 by abdsalah          #+#    #+#             */
+/*   Updated: 2025/05/06 17:47:55 by abdsalah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "rush.h"
+#include "libft.h"
 
-int count_digits(int n)
+bool	ft_is_power_of_2(int num)
 {
-    int count = 0;
-
-    if (n < 0)
-        n = -n;
-    if (n == 0)
-        return 1;
-    while (n > 0)
-    {
-        n /= 10;
-        count++;
-    }
-    return count;
+	if (num <= 0)
+		return (false);
+	while (num > 1)
+	{
+		if (num % 2 != 0)
+			return (false);
+		num /= 2;
+	}
+	return (true);
 }

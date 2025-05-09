@@ -1,27 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_atol.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abdsalah <abdsalah@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/30 19:28:47 by abdsalah          #+#    #+#             */
-/*   Updated: 2025/05/09 16:02:56 by abdsalah         ###   ########.fr       */
+/*   Created: 2024/08/26 15:30:43 by abdsalah          #+#    #+#             */
+/*   Updated: 2025/05/06 18:03:37 by abdsalah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "main_2048.h"
+#include "libft.h"
 
-int	main(void)
+long	ft_atol(const char *str)
 {
-	t_game game;
-	
-	if (init(&game))
+	size_t	i;
+	long	sign;
+	long	number;
+
+	i = 0;
+	sign = 1;
+	number = 0;
+	if (str[0] == '\0')
+		return (0);
+	while (ft_isspace(str[i]))
+		i++;
+	if (str[i] == '-' || str[i] == '+')
 	{
-		return (1);
+		if (str[i] == '-')
+			sign = -1;
+		i++;
 	}
-	start(&game);
-	clear();
-	endwin();
-	return (0);
+	while (ft_isdigit(str[i]))
+	{
+		number = number * 10 + (str[i] - '0');
+		i++;
+	}
+	return (number * sign);
 }

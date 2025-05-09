@@ -6,11 +6,15 @@
 /*   By: abdsalah <abdsalah@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/01 21:52:04 by abdsalah          #+#    #+#             */
-/*   Updated: 2025/05/03 01:38:24 by abdsalah         ###   ########.fr       */
+/*   Updated: 2025/05/09 16:06:05 by abdsalah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "rush.h"
+/**
+ * @file random_spawn.c
+ * */
+
+#include "main_2048.h"
 
 int	get_random_num(void)
 {
@@ -25,7 +29,7 @@ int	get_random_num(void)
 
 int	get_random_pos(t_game *game)
 {
-	int	empty_cells[25][2];
+	int	empty_cells[MAX_GRID_SIZE * MAX_GRID_SIZE][2];
 	int	count;
 	int	index;
 

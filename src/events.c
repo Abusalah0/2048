@@ -6,11 +6,11 @@
 /*   By: abdsalah <abdsalah@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/02 00:44:22 by abdsalah          #+#    #+#             */
-/*   Updated: 2025/05/03 22:28:47 by abdsalah         ###   ########.fr       */
+/*   Updated: 2025/05/09 16:02:56 by abdsalah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "rush.h"
+#include "main_2048.h"
 
 int	board_changed(int *old, int *new, int size)
 {
@@ -25,11 +25,9 @@ int handle_key_events(int key, t_game *game)
     int old_board[game->grid_size][game->grid_size];
     bool moved;
 
-    
     ft_memcpy(old_board,
            game->grid,
            game->grid_size * game->grid_size * sizeof(int));
-
     if (key == KEY_RESIZE)
     {
         resizeterm(0, 0);
@@ -46,7 +44,6 @@ int handle_key_events(int key, t_game *game)
         right_key_event(game);
     else
         return (0);
-
     moved = board_changed(&old_board[0][0],
                           &game->grid[0][0],
                           game->grid_size);

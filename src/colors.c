@@ -6,12 +6,17 @@
 /*   By: abdsalah <abdsalah@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/02 14:20:26 by abdsalah          #+#    #+#             */
-/*   Updated: 2025/05/02 16:08:35 by abdsalah         ###   ########.fr       */
+/*   Updated: 2025/05/09 16:15:08 by abdsalah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "rush.h"
+#include "main_2048.h"
 
+/**
+ * @brief Converts a number to a color pair.
+ * @param num The number to convert.
+ * @returns  - The corresponding color pair.
+ */
 int color_pair(int num)
 {
 	int pair = 0;

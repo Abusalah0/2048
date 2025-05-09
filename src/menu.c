@@ -6,11 +6,11 @@
 /*   By: abdsalah <abdsalah@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/02 19:16:20 by abdsalah          #+#    #+#             */
-/*   Updated: 2025/05/03 22:40:57 by abdsalah         ###   ########.fr       */
+/*   Updated: 2025/05/09 16:02:56 by abdsalah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "rush.h"
+#include "main_2048.h"
 
 static void print_menu_title(WINDOW *menu_win, char *title)
 {

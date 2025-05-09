@@ -6,11 +6,11 @@
 /*   By: abdsalah <abdsalah@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/02 01:38:09 by abdsalah          #+#    #+#             */
-/*   Updated: 2025/05/03 22:18:57 by abdsalah         ###   ########.fr       */
+/*   Updated: 2025/05/09 16:02:56 by abdsalah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "rush.h"
+#include "main_2048.h"
 
 static void	game_over_handler(t_game *game)
 {

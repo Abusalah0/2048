@@ -1,27 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_count_digits.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abdsalah <abdsalah@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/30 19:28:47 by abdsalah          #+#    #+#             */
-/*   Updated: 2025/05/09 16:02:56 by abdsalah         ###   ########.fr       */
+/*   Created: 2025/05/09 15:44:03 by abdsalah          #+#    #+#             */
+/*   Updated: 2025/05/09 15:45:44 by abdsalah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "main_2048.h"
+#include "libft.h"
 
-int	main(void)
+int ft_count_digits(int n)
 {
-	t_game game;
-	
-	if (init(&game))
-	{
-		return (1);
-	}
-	start(&game);
-	clear();
-	endwin();
-	return (0);
+    int count;
+
+    count = 0;
+    if (n < 0)
+        n = -n;
+    if (n == 0)
+        return (1);
+    while (n > 0)
+    {
+        n /= 10;
+        count++;
+    }
+    return (count);
 }

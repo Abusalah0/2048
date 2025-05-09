@@ -1,27 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abdsalah <abdsalah@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/30 19:28:47 by abdsalah          #+#    #+#             */
-/*   Updated: 2025/05/09 16:02:56 by abdsalah         ###   ########.fr       */
+/*   Created: 2025/02/17 11:45:55 by abdsalah          #+#    #+#             */
+/*   Updated: 2025/05/06 18:05:47 by abdsalah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "main_2048.h"
+#include "libft.h"
 
-int	main(void)
+char	*ft_strcpy(char *dest, const char *src)
 {
-	t_game game;
-	
-	if (init(&game))
+	char	*temp;
+	int		i;
+
+	if (!dest || !src)
+		return (NULL);
+	i = 0;
+	temp = dest;
+	while (*(src + i) != '\0')
 	{
-		return (1);
+		dest[i] = src[i];
+		i++;
 	}
-	start(&game);
-	clear();
-	endwin();
-	return (0);
+	dest[i] = '\0';
+	return (temp);
 }

@@ -6,11 +6,11 @@
 /*   By: abdsalah <abdsalah@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/01 21:52:43 by abdsalah          #+#    #+#             */
-/*   Updated: 2025/05/03 22:26:48 by abdsalah         ###   ########.fr       */
+/*   Updated: 2025/05/09 16:04:50 by abdsalah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "rush.h"
+#include "main_2048.h"
 
 static void init_colors(t_game *game)
 {
